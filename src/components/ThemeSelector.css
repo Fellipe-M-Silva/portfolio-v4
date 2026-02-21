@@ -1,0 +1,118 @@
+.theme-selector {
+	position: relative;
+}
+
+.selector-button {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border: 1px solid var(--color-border);
+	border-radius: 4px;
+	font-size: var(--font-size-sm);
+	font-weight: 500;
+	color: var(--color-text);
+	background-color: var(--color-bg-secondary);
+	cursor: pointer;
+	transition: all var(--transition-normal);
+}
+
+.selector-button:hover,
+.selector-button:focus-visible {
+	background-color: var(--color-primary-light);
+	color: var(--color-primary-dark);
+	outline: none;
+}
+
+.selector-button:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}
+
+.selector-label {
+	white-space: nowrap;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin-top: var(--spacing-xs);
+	min-width: 180px;
+	background-color: var(--color-bg-secondary);
+	border: 1px solid var(--color-border);
+	border-radius: 4px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	z-index: 20;
+	display: flex;
+	flex-direction: column;
+	animation: slideDown var(--transition-fast);
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.dropdown-item {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-sm) var(--spacing-md);
+	border: none;
+	background: none;
+	color: var(--color-text);
+	text-align: left;
+	cursor: pointer;
+	transition: all var(--transition-normal);
+	font-size: var(--font-size-sm);
+	border-left: 3px solid transparent;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus-visible {
+	background-color: var(--color-primary-light);
+	color: var(--color-primary-dark);
+	outline: none;
+}
+
+.dropdown-item.active {
+	background-color: var(--color-primary-light);
+	color: var(--color-primary-dark);
+	border-left-color: var(--color-primary);
+	font-weight: 600;
+}
+
+.dropdown-item:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: -2px;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+	.dropdown-menu {
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	}
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+	.selector-button {
+		border-width: 2px;
+	}
+
+	.dropdown-menu {
+		border-width: 2px;
+	}
+
+	.dropdown-item {
+		border-left-width: 4px;
+	}
+}

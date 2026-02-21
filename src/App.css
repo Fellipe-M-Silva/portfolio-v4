@@ -1,0 +1,20 @@
+main {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+/* Container padrão para seções */
+.container {
+	width: 100%;
+	max-width: var(--max-width-container);
+	margin: 0 auto;
+	padding: 0 var(--spacing-lg);
+}
+
+@media (max-width: 768px) {
+	.container {
+		padding: 0 var(--spacing-md);
+	}
+}

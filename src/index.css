@@ -1,0 +1,134 @@
+:root {
+	/* Cores Primárias (okclh) */
+	--color-primary: oklch(85% 0.15 70);
+	--color-primary-light: oklch(95% 0.08 70);
+	--color-primary-dark: oklch(55% 0.2 70);
+
+	/* Cores Neutras - Light Mode (padrão) */
+	--color-bg: oklch(98% 0.01 0);
+	--color-bg-secondary: oklch(95% 0.01 0);
+	--color-text: oklch(20% 0.02 0);
+	--color-text-secondary: oklch(45% 0.02 0);
+	--color-text-tertiary: oklch(65% 0.01 0);
+	--color-border: oklch(85% 0.01 0);
+
+	/* Tamanhos */
+	--spacing-xs: 0.5rem;
+	--spacing-sm: 1rem;
+	--spacing-md: 1.5rem;
+	--spacing-lg: 2rem;
+	--spacing-xl: 3rem;
+	--spacing-2xl: 4rem;
+
+	/* Tipografia */
+	--font-family-sans:
+		"Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--font-family-mono: "Geist Mono", "Monaco", "Menlo", monospace;
+
+	--font-size-xs: 0.75rem;
+	--font-size-sm: 0.875rem;
+	--font-size-base: 1rem;
+	--font-size-lg: 1.125rem;
+	--font-size-xl: 1.5rem;
+	--font-size-2xl: 2rem;
+	--font-size-3xl: 2.5rem;
+
+	--line-height-tight: 1.2;
+	--line-height-normal: 1.5;
+	--line-height-relaxed: 1.75;
+
+	/* Animações */
+	--transition-fast: 150ms ease-out;
+	--transition-normal: 250ms ease-out;
+	--transition-slow: 350ms ease-out;
+
+	/* Container */
+	--max-width-container: 1200px;
+}
+
+/* Dark mode explícito */
+html.dark-mode {
+	--color-bg: oklch(15% 0.02 0);
+	--color-bg-secondary: oklch(22% 0.02 0);
+	--color-text: oklch(95% 0.01 0);
+	--color-text-secondary: oklch(75% 0.02 0);
+	--color-text-tertiary: oklch(55% 0.01 0);
+	--color-border: oklch(30% 0.01 0);
+}
+
+/* Fallback para preferência de sistema (caso não tenha classe) */
+@media (prefers-color-scheme: dark) {
+	html:not(.light-mode) {
+		--color-bg: oklch(15% 0.02 0);
+		--color-bg-secondary: oklch(22% 0.02 0);
+		--color-text: oklch(95% 0.01 0);
+		--color-text-secondary: oklch(75% 0.02 0);
+		--color-text-tertiary: oklch(55% 0.01 0);
+		--color-border: oklch(30% 0.01 0);
+	}
+}
+
+/* Alto contraste */
+@media (prefers-contrast: more) {
+	html.light-mode {
+		--color-text: oklch(10% 0.02 0);
+		--color-bg: oklch(99% 0 0);
+		--color-border: oklch(50% 0.02 0);
+	}
+
+	html.dark-mode {
+		--color-text: oklch(99% 0 0);
+		--color-bg: oklch(5% 0 0);
+		--color-border: oklch(50% 0.02 0);
+	}
+
+	@media (prefers-color-scheme: dark) {
+		html:not(.light-mode) {
+			--color-text: oklch(99% 0 0);
+			--color-bg: oklch(5% 0 0);
+			--color-border: oklch(50% 0.02 0);
+		}
+	}
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-family-sans);
+	font-size: var(--font-size-base);
+	line-height: var(--line-height-normal);
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	transition:
+		background-color var(--transition-normal),
+		color var(--transition-normal);
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font-family: inherit;
+	cursor: pointer;
+	border: none;
+	background: none;
+}
+
+/* Acessibilidade: Respeitar redução de movimento */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

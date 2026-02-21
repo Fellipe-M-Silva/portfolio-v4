@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Hi! I'm a Product Designer",
+    "description": "I create simple, intuitive and user-centered digital experiences.",
+    "cta": "View my projects",
+    "featured": "Featured Projects"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "A selection of case studies from recent work",
+    "viewProject": "View project"
+  },
+  "project": {
+    "backToProjects": "Back to projects",
+    "nextProject": "Next project",
+    "teamSize": "Team size",
+    "duration": "Duration",
+    "role": "My role",
+    "challengeTitle": "Challenge",
+    "solutionTitle": "Solution",
+    "resultsTitle": "Results"
+  },
+  "about": {
+    "title": "About",
+    "intro": "Product Designer focused on user experience and design systems.",
+    "experience": "Experience",
+    "skills": "Skills",
+    "downloadCV": "Download CV"
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "Let's talk! I'm always open to discuss new projects and ideas.",
+    "infoTitle": "Get in Touch",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "social": "Social Media",
+    "sendMessage": "Send a Message",
+    "messageSent": "Message sent successfully! I'll get back to you soon.",
+    "messageError": "Error sending message. Please try again.",
+    "formName": "Name",
+    "formNamePlaceholder": "Your name",
+    "formEmail": "Email",
+    "formEmailPlaceholder": "your.email@example.com",
+    "formSubject": "Subject",
+    "formSubjectPlaceholder": "Message subject",
+    "formMessage": "Message",
+    "formMessagePlaceholder": "Write your message here...",
+    "formSubmit": "Send Message",
+    "formSending": "Sending..."
+  },
+  "footer": {
+    "text": "© 2026 My Portfolio. All rights reserved.",
+    "contact": "Get in touch"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "home": "Início",
+    "projects": "Projetos",
+    "about": "Sobre",
+    "contact": "Contato"
+  },
+  "home": {
+    "title": "Olá! Sou Product Designer",
+    "description": "Crio experiências digitais simples, intuitivas e centradas no usuário.",
+    "cta": "Ver meus projetos",
+    "featured": "Projetos em Destaque"
+  },
+  "projects": {
+    "title": "Projetos",
+    "description": "Uma seleção de estudos de caso de trabalhos recentes",
+    "viewProject": "Ver projeto"
+  },
+  "project": {
+    "backToProjects": "Voltar para projetos",
+    "nextProject": "Próximo projeto",
+    "teamSize": "Tamanho da equipe",
+    "duration": "Duração",
+    "role": "Meu papel",
+    "challengeTitle": "Desafio",
+    "solutionTitle": "Solução",
+    "resultsTitle": "Resultados"
+  },
+  "about": {
+    "title": "Sobre",
+    "intro": "Product Designer com foco em experiência de usuário e design de sistemas.",
+    "experience": "Experiência",
+    "skills": "Habilidades",
+    "downloadCV": "Baixar CV"
+  },
+  "contact": {
+    "title": "Contato",
+    "intro": "Vamos conversar! Estou sempre aberto para discutir novos projetos e ideias.",
+    "infoTitle": "Entre em Contato",
+    "email": "Email",
+    "phone": "Telefone",
+    "location": "Localização",
+    "social": "Redes Sociais",
+    "sendMessage": "Enviar Mensagem",
+    "messageSent": "Mensagem enviada com sucesso! Vou responder em breve.",
+    "messageError": "Erro ao enviar mensagem. Tente novamente.",
+    "formName": "Nome",
+    "formNamePlaceholder": "Seu nome",
+    "formEmail": "Email",
+    "formEmailPlaceholder": "seu.email@exemplo.com",
+    "formSubject": "Assunto",
+    "formSubjectPlaceholder": "Assunto da mensagem",
+    "formMessage": "Mensagem",
+    "formMessagePlaceholder": "Escreva sua mensagem aqui...",
+    "formSubmit": "Enviar Mensagem",
+    "formSending": "Enviando..."
+  },
+  "footer": {
+    "text": "© 2026 Meu Portfólio. Todos os direitos reservados.",
+    "contact": "Entre em contato"
+  }
+}
