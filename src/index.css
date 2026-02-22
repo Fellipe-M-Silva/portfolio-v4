@@ -1,16 +1,17 @@
 :root {
 	/* Cores Primárias (okclh) */
-	--color-primary: oklch(85% 0.15 70);
+	--color-primary: oklch(0.86 0.1705 88.22);
 	--color-primary-light: oklch(95% 0.08 70);
 	--color-primary-dark: oklch(55% 0.2 70);
 
 	/* Cores Neutras - Light Mode (padrão) */
-	--color-bg: oklch(98% 0.01 0);
-	--color-bg-secondary: oklch(95% 0.01 0);
+	--color-bg: oklch(0.9911 0 0);
+	--color-bg-secondary: oklch(0.95 0 0);
 	--color-text: oklch(20% 0.02 0);
 	--color-text-secondary: oklch(45% 0.02 0);
 	--color-text-tertiary: oklch(65% 0.01 0);
 	--color-border: oklch(85% 0.01 0);
+	--color-border-hover: oklch(0.7 0.02 0);
 
 	/* Tamanhos */
 	--spacing-xs: 0.5rem;
@@ -22,8 +23,10 @@
 
 	/* Tipografia */
 	--font-family-sans:
-		"Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	--font-family-mono: "Geist Mono", "Monaco", "Menlo", monospace;
+		"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--font-family-mono:
+		"Spline Sans Mono", "Source Code Pro", "Consolas", "Monaco", "Menlo",
+		monospace;
 
 	--font-size-xs: 0.75rem;
 	--font-size-sm: 0.875rem;
@@ -54,6 +57,7 @@ html.dark-mode {
 	--color-text-secondary: oklch(75% 0.02 0);
 	--color-text-tertiary: oklch(55% 0.01 0);
 	--color-border: oklch(30% 0.01 0);
+	--color-border-hover: oklch(30% 0.02 0);
 }
 
 /* Fallback para preferência de sistema (caso não tenha classe) */
@@ -65,6 +69,7 @@ html.dark-mode {
 		--color-text-secondary: oklch(75% 0.02 0);
 		--color-text-tertiary: oklch(55% 0.01 0);
 		--color-border: oklch(30% 0.01 0);
+		--color-border-hover: oklch(30% 0.02 0);
 	}
 }
 
@@ -74,12 +79,14 @@ html.dark-mode {
 		--color-text: oklch(10% 0.02 0);
 		--color-bg: oklch(99% 0 0);
 		--color-border: oklch(50% 0.02 0);
+		--color-border-hover: oklch(50% 0.04 0);
 	}
 
 	html.dark-mode {
 		--color-text: oklch(99% 0 0);
 		--color-bg: oklch(5% 0 0);
 		--color-border: oklch(50% 0.02 0);
+		--color-border-hover: oklch(50% 0.04 0);
 	}
 
 	@media (prefers-color-scheme: dark) {
@@ -122,6 +129,17 @@ button {
 	cursor: pointer;
 	border: none;
 	background: none;
+}
+
+button.secondary {
+	color: var(--color-text-secondary);
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+
+	&:hover {
+		color: var(--color-text);
+		border-color: var(--color-border-hover);
+	}
 }
 
 /* Acessibilidade: Respeitar redução de movimento */

@@ -10,6 +10,7 @@ import ProjectDetail from './pages/ProjectDetail'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import './App.css'
+import './index.css'
 
 function App() {
   const { i18n } = useTranslation()

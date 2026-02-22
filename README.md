@@ -88,8 +88,8 @@ Suporta temas claro, escuro e alto contraste através de media queries.
 
 ### Tipografia
 
-- **Sans-serif**: Geist (UI geral)
-- **Mono**: Geist Mono (tags, chips, botões especiais)
+- **Sans-serif**: Inter (UI geral)
+- **Mono**: Source Code Pro (tags, chips, botões especiais)
 
 ## 🌍 Internacionalização
 

@@ -43,7 +43,6 @@ export function About() {
     <div className="about-page">
       <section className="about-header">
         <div className="container">
-          <h1>{t('about.title')}</h1>
           <p className="about-intro">{t('about.intro')}</p>
         </div>
       </section>

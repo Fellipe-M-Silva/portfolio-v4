@@ -1,19 +1,22 @@
 .header {
 	background-color: var(--color-bg);
 	border-bottom: 1px solid var(--color-border);
+	padding: var(--spacing-xs) clamp(1rem, 3vw, 2rem);
 	position: sticky;
 	top: 0;
 	z-index: 10;
 }
 
 .header-nav {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
 	align-items: center;
-	justify-content: space-between;
-	max-width: var(--max-width-container);
 	margin: 0 auto;
-	padding: var(--spacing-md) var(--spacing-lg);
-	gap: var(--spacing-lg);
+	gap: var(--spacing-sm);
+}
+
+.nav-logo {
+	grid-column: 1 / span 1;
 }
 
 .nav-logo a {
@@ -32,51 +35,140 @@
 .nav-links {
 	display: flex;
 	list-style: none;
-	gap: var(--spacing-lg);
+	position: relative;
+	grid-column: 2 / span 4;
+}
+
+/* Indicador animado para navegação */
+.nav-links::after {
+	content: "";
+	position: absolute;
+	pointer-events: none;
+	border-radius: 4px;
+	z-index: 0;
+	top: 0;
+	/* Transição de volta: cor muda no final */
+	transition:
+		background-color 0.15s ease 0.25s,
+		width 0.3s ease,
+		height 0.3s ease,
+		top 0.3s ease,
+		left 0.3s ease;
+}
+
+/* Estado padrão: travessão abaixo do link ativo */
+.nav-links::after {
+	height: 2px;
+	background-color: var(--color-text);
+	left: 0;
+	width: 0;
+}
+
+/* Estado hover/focus: retângulo com fundo */
+.nav-links:has(a:hover)::after,
+.nav-links:has(a:focus-visible)::after {
+	background-color: var(--color-bg-secondary);
+	border-radius: 8px;
+	bottom: auto;
+	height: auto;
+	/* Transição de entrada: cor muda rápido, resto tem delay */
+	transition:
+		background-color 0.15s ease,
+		width 0.3s ease 0.1s,
+		height 0.3s ease 0.1s,
+		top 0.3s ease 0.1s,
+		left 0.3s ease 0.1s;
 }
 
 .nav-links a {
-	font-size: var(--font-size-base);
+	font-size: var(--font-size-sm);
+	font-family:
+		"Source Code Pro", "Consolas", "Monaco", "Menlo", monospace !important;
 	color: var(--color-text);
+	text-transform: uppercase;
 	transition: color var(--transition-normal);
 	position: relative;
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: 4px;
+	z-index: 1;
+}
+
+.nav-links a.active {
+	anchor-name: --active-link;
+}
+
+.nav-links a:hover {
+	anchor-name: --hovered-link;
+}
+
+.nav-links a:focus-visible {
+	anchor-name: --focused-link;
+}
+
+/* Fallback: posicionamento sem anchor positioning */
+@supports not (anchor-name: --test) {
+	.nav-links a.active::after {
+		content: "";
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background-color: var(--color-text);
+	}
+
+	.nav-links a:hover,
+	.nav-links a:focus-visible {
+		background-color: var(--color-bg-secondary);
+	}
+}
+
+/* Anchor positioning para navegadores modernos */
+@supports (anchor-name: --test) {
+	/* Estado padrão: travessão no link ativo */
+	.nav-links::after {
+		width: anchor-size(--active-link width, 0);
+		left: anchor(--active-link left, 0);
+		top: anchor(--active-link bottom, 0);
+		height: 2px;
+		background-color: var(--color-text);
+	}
+
+	/* Hover: retângulo envolvendo o link */
+	.nav-links:has(a:hover)::after {
+		width: anchor-size(--hovered-link width, 0);
+		height: anchor-size(--hovered-link height, 32px);
+		top: anchor(--hovered-link top, 0);
+		left: anchor(--hovered-link left, 0);
+		background-color: var(--color-bg-secondary);
+	}
+
+	/* Focus: retângulo envolvendo o link */
+	.nav-links:has(a:focus-visible)::after {
+		width: anchor-size(--focused-link width, 0);
+		height: anchor-size(--focused-link height, 32px);
+		top: anchor(--focused-link top, 0);
+		left: anchor(--focused-link left, 0);
+		background-color: var(--color-bg-secondary);
+	}
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-	color: var(--color-primary);
+	color: var(--color-text);
 	outline: none;
-}
-
-.nav-links a::after {
-	content: "";
-	position: absolute;
-	bottom: -4px;
-	left: 0;
-	width: 0;
-	height: 2px;
-	background-color: var(--color-primary);
-	transition: width var(--transition-normal);
-}
-
-.nav-links a:hover::after,
-.nav-links a:focus-visible::after {
-	width: 100%;
+	z-index: 1;
 }
 
 .header-controls {
 	display: flex;
-	align-items: center;
-	gap: var(--spacing-sm);
+	justify-content: right;
+	gap: var(--spacing-xs);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
 	.header-nav {
-		padding: var(--spacing-md);
-		gap: var(--spacing-md);
-	}
-
-	.nav-links {
+		grid-template-columns: auto 1fr;
 		gap: var(--spacing-md);
 	}
 
@@ -84,8 +176,8 @@
 		font-size: var(--font-size-base);
 	}
 
-	.nav-links a {
-		font-size: var(--font-size-sm);
+	.nav-links {
+		display: none;
 	}
 
 	.header-controls {
@@ -94,8 +186,7 @@
 }
 
 /* Acessibilidade */
-.nav-logo a:focus-visible,
-.nav-links a:focus-visible {
+.nav-logo a:focus-visible {
 	outline: 2px solid var(--color-primary);
 	outline-offset: 2px;
 }

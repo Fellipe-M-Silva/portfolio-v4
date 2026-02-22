@@ -1,16 +1,15 @@
 main {
 	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	flex: 1;
+  padding: clamp(2rem, 5vw, 4rem) var(--spacing-lg);
+}
+
+main div {
+  max-width: var(--max-width-container);
+  margin: 0 auto;
 }
 
 /* Container padrão para seções */
 .container {
-	width: 100%;
-	max-width: var(--max-width-container);
-	margin: 0 auto;
-	padding: 0 var(--spacing-lg);
 }
 
 @media (max-width: 768px) {
