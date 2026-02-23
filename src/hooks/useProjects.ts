@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { sanityClient } from "@/lib/sanityClient";
-import { Project } from "@/types";
+import { Project, CareerItem, ResumeData } from "@/types";
 
 type UseProjectsState = {
 	data: Project[];
@@ -308,6 +308,92 @@ export function useAbout() {
 		};
 
 		fetchAbout();
+
+		return () => {
+			isMounted = false;
+		};
+	}, []);
+
+	return state;
+}
+
+/**
+ * Hook para buscar todos os career items e agrupá-los por categoria
+ */
+export function useResume() {
+	const [state, setState] = useState<{
+		data: ResumeData;
+		isLoading: boolean;
+		error: Error | null;
+	}>({
+		data: {
+			experience: [],
+			education: [],
+			research: [],
+		},
+		isLoading: true,
+		error: null,
+	});
+
+	useEffect(() => {
+		let isMounted = true;
+
+		const fetchResume = async () => {
+			try {
+				const query = `*[_type == "careerItem"] | order(order asc) {
+          _id,
+          title,
+          location,
+					startYear,
+					endYear,
+					isPresent,
+          type,
+          category,
+          description,
+          order
+        }`;
+
+				const careerItems = await sanityClient.fetch(query);
+
+				if (isMounted) {
+					// Agrupar items por categoria
+					const groupedData: ResumeData = {
+						experience: careerItems.filter(
+							(item) => item.category === "experience",
+						),
+						education: careerItems.filter(
+							(item) => item.category === "education",
+						),
+						research: careerItems.filter(
+							(item) => item.category === "research",
+						),
+					};
+
+					setState({
+						data: groupedData,
+						isLoading: false,
+						error: null,
+					});
+				}
+			} catch (error) {
+				if (isMounted) {
+					setState({
+						data: {
+							experience: [],
+							education: [],
+							research: [],
+						},
+						isLoading: false,
+						error:
+							error instanceof Error
+								? error
+								: new Error("Unknown error"),
+					});
+				}
+			}
+		};
+
+		fetchResume();
 
 		return () => {
 			isMounted = false;

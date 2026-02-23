@@ -1,38 +1,82 @@
 import { useTranslation } from 'react-i18next'
-import { useAbout } from '@/hooks/useProjects'
-import { getLocalizedString } from '@/utils/i18n'
+import { useResume } from '@/hooks/useProjects'
+import { useLocalizedString } from '@/utils/i18n'
+import type { CareerItem } from '@/types'
 import './About.css'
 
+function ResumeCard({ item }: { item: CareerItem }) {
+  const { t } = useTranslation()
+  const title = useLocalizedString(item.title)
+  const location = useLocalizedString(item.location)
+  const type = useLocalizedString(item.type)
+  const description = item.description ? useLocalizedString(item.description) : undefined
+
+  const periodLabel = item.isPresent
+    ? `${item.startYear} - ${t('about.present')}`
+    : item.endYear
+      ? `${item.startYear} - ${item.endYear}`
+      : `${item.startYear}`
+
+  return (
+    <li className="resume-card">
+      <div className="resume-card-header">
+        <h3 className="resume-card-title">{title}</h3>
+        <span className="resume-card-period">{periodLabel}</span>
+      </div>
+      <div className="resume-card-content">
+        <p className="resume-card-meta">
+          <span className="resume-card-location">{location}</span>
+          <span className="resume-card-separator">✦</span>
+          <span className="resume-card-type">{type}</span>
+        </p>
+        {description && (
+          <p className="resume-card-description">{description}</p>
+        )}
+      </div>
+    </li>
+  )
+}
+
+function ResumeSection({ title, items }: { title: string; items: CareerItem[] }) {
+  return (
+    <section className="resume-section">
+      <h2 className="resume-section-title">{title}</h2>
+      <ul className="resume-list">
+        {items.map((item) => (
+          <ResumeCard key={item._id} item={item} />
+        ))}
+      </ul>
+    </section>
+  )
+}
+
 export function About() {
-  const { t, i18n } = useTranslation()
-  const { data: about, isLoading, error } = useAbout()
+  const { t } = useTranslation()
+  const { data: resumeData, isLoading, error } = useResume()
 
   if (isLoading) {
     return (
       <div className="about-page">
-        <section className="about-header">
-          <div className="container">
-            <div className="skeleton-text" style={{ height: '3rem' }}></div>
-            <div className="skeleton-text" style={{ width: '70%' }}></div>
-          </div>
+        <section className="about-intro-section">
+          <div className="skeleton-text" style={{ height: '1.5rem' }}></div>
+          <div className="skeleton-text" style={{ width: '80%', marginTop: '1rem' }}></div>
         </section>
-        <div className="container about-content">
-          <div className="skeleton-text"></div>
-          <div className="skeleton-text"></div>
-        </div>
+        <section className="about-resume">
+          <div className="skeleton-text" style={{ height: '1rem', marginBottom: '2rem' }}></div>
+          <div className="skeleton-text" style={{ height: '100px', marginBottom: '1rem' }}></div>
+          <div className="skeleton-text" style={{ height: '100px' }}></div>
+        </section>
       </div>
     )
   }
 
-  if (error || !about) {
+  if (error) {
     return (
       <div className="about-page">
-        <section className="about-header">
-          <div className="container">
-            <h1>{t('about.title')}</h1>
-            <div className="error-message">
-              Erro ao carregar página. Tente novamente mais tarde.
-            </div>
+        <section className="about-intro-section">
+          <p className="about-intro">{t('about.intro')}</p>
+          <div className="error-message">
+            Erro ao carregar currículo. Tente novamente mais tarde.
           </div>
         </section>
       </div>
@@ -41,77 +85,28 @@ export function About() {
 
   return (
     <div className="about-page">
-      <section className="about-header">
-        <div className="container">
+      <section className="about-intro-section">
           <p className="about-intro">{t('about.intro')}</p>
-        </div>
+          <p>Disponível para oportunidades de freelancing e trabalho remoto. Se você tem uma ideia que quer transformar em realidade, <a>manda uma mensagem</a>!</p>
+          <p>Além de design e programação, estou:</p>
+          <ul className="about-interests">
+            <li>Lendo Memórias de um Sargento de Milícia</li>
+            <li>Estudando Cálculo (de novo)</li>
+            <li>Jogando Hades 2</li>
+          </ul>
       </section>
 
-      <div className="container about-content">
-        {/* Biografia */}
-        {about.bio && (
-          <section className="about-section">
-            <h2>Meu Percurso</h2>
-            <p>{getLocalizedString(about.bio, i18n.language)}</p>
-          </section>
+      <section className="about-resume">
+        {resumeData.experience.length > 0 && (
+          <ResumeSection title={t('about.experience')} items={resumeData.experience} />
         )}
-
-        <div className="about-grid">
-          {/* Experiência */}
-          {about.experience && about.experience.length > 0 && (
-            <section className="about-section">
-              <h2>{t('about.experience')}</h2>
-              <ul className="experience-list">
-                {about.experience.map(exp => (
-                  <li key={exp._key}>
-                    <strong>{exp.company}</strong> - {exp.position}
-                    <span className="date">
-                      {exp.startDate} {exp.endDate ? `- ${exp.endDate}` : '- Presente'}
-                    </span>
-                    {exp.description && (
-                      <p>{getLocalizedString(exp.description, i18n.language)}</p>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )}
-
-          {/* Habilidades */}
-          {about.skills && about.skills.length > 0 && (
-            <section className="about-section">
-              <h2>{t('about.skills')}</h2>
-              <div className="skills-grid">
-                {Object.entries(
-                  about.skills.reduce((acc, skill) => {
-                    if (!acc[skill.category]) acc[skill.category] = [];
-                    acc[skill.category].push(skill.name);
-                    return acc;
-                  }, {} as Record<string, string[]>)
-                ).map(([category, skills]) => (
-                  <div key={category} className="skills-category">
-                    <h3>{category}</h3>
-                    <ul>
-                      {skills.map((skill, idx) => (
-                        <li key={idx}>{skill}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
-        </div>
-
-        {/* CTA para Download CV */}
-        <section className="cv-section">
-          <h2>Quer saber mais?</h2>
-          <p>Confira meu CV completo para mais detalhes</p>
-          <a href="/CV.pdf" download className="cv-button">
-            {t('about.downloadCV')}
-          </a>
-        </section>
-      </div>
+        {resumeData.education.length > 0 && (
+          <ResumeSection title={t('about.education')} items={resumeData.education} />
+        )}
+        {resumeData.research.length > 0 && (
+          <ResumeSection title={t('about.research')} items={resumeData.research} />
+        )}
+      </section>
     </div>
   )
 }

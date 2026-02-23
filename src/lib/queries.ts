@@ -105,6 +105,22 @@ export const PREVIOUS_PROJECT_QUERY = `
   }
 `;
 
+// Buscar todos os career items
+export const ALL_CAREER_ITEMS_QUERY = `
+  *[_type == "careerItem"] | order(order asc) {
+    _id,
+    title,
+    location,
+    startYear,
+    endYear,
+    isPresent,
+    type,
+    category,
+    description,
+    order
+  }
+`;
+
 export default {
 	ALL_PROJECTS_QUERY,
 	FEATURED_PROJECTS_QUERY,
@@ -112,4 +128,5 @@ export default {
 	ABOUT_PAGE_QUERY,
 	NEXT_PROJECT_QUERY,
 	PREVIOUS_PROJECT_QUERY,
+	ALL_CAREER_ITEMS_QUERY,
 };

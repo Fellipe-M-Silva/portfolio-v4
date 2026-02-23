@@ -60,6 +60,26 @@ export interface ExperienceItem {
 	description: LocalizedString;
 }
 
+export interface CareerItem {
+	_id: string;
+	_type: "careerItem";
+	title: LocalizedString;
+	location: LocalizedString;
+	startYear: number;
+	endYear?: number;
+	isPresent?: boolean;
+	type: LocalizedString;
+	category: "experience" | "education" | "research";
+	description?: LocalizedString;
+	order: number;
+}
+
+export interface ResumeData {
+	experience: CareerItem[];
+	education: CareerItem[];
+	research: CareerItem[];
+}
+
 export interface Skill {
 	name: string;
 	category: string;

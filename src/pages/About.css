@@ -9,25 +9,142 @@
 	font-size: var(--font-size-lg);
 	color: var(--color-text-secondary);
 	max-width: 600px;
+	margin-bottom: var(--spacing-md);
 }
 
-.about-section {
-	margin-bottom: var(--spacing-2xl);
+.about-interests {
+	list-style: none;
+	margin-top: var(--spacing-md);
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-xs);
 }
 
-.about-section h2 {
-	font-size: var(--font-size-2xl);
-	font-weight: 700;
-	margin-bottom: var(--spacing-lg);
+.about-interests li {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-secondary);
+}
+
+.about-interests li::before {
+	content: "✦ ";
+	color: var(--color-primary-dark);
+	margin-right: var(--spacing-xs);
+}
+
+/* Resume Sections */
+
+.resume-section-title {
+	font-size: var(--font-size-sm);
+	font-family: var(--font-family-mono);
+	font-weight: 500;
+	color: var(--color-text-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-top: var(--spacing-xl);
+	margin-bottom: var(--spacing-md);
+	padding-bottom: var(--spacing-sm);
+	border-bottom: 2px solid var(--color-border);
+}
+
+.resume-list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-lg);
+}
+
+/* Resume Card */
+.resume-card {
+	transition: all var(--transition-normal);
+}
+
+.resume-card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--spacing-md);
+	margin-bottom: var(--spacing-xs);
+}
+
+.resume-card-title {
+	font-size: var(--font-size-base);
+	font-weight: 600;
+	color: var(--color-text);
+	margin: 0;
+}
+
+.resume-card-meta {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-secondary);
+	margin: 0 0 var(--spacing-xs) 0;
+	gap: var(--spacing-xs);
+	anchor-name: --resume-card-meta;
+	text-transform: uppercase;
+	font-family: var(--font-family-mono);
+}
+
+.resume-card-location {
 	color: var(--color-text);
 }
 
+.resume-card-separator {
+	font-family: var(--font-family-sans);
+	margin-inline: var(--spacing-xs);
+	color: var(--color-primary-dark);
+	font-size: var(--font-size-xs);
+}
 
-.about-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: var(--spacing-2xl);
-	margin-bottom: var(--spacing-2xl);
+.resume-card-period {
+	color: var(--color-text-tertiary);
+	font-size: var(--font-size-xs);
+	white-space: nowrap;
+}
+
+.resume-card-content {
+	padding-top: var(--spacing-sm);
+	position: relative;
+	anchor-name: --resume-card-content;
+
+	p {
+		margin-left: var(--spacing-md);
+
+		&::before {
+			content: "";
+			color: var(--color-primary);
+			border-left: 1px solid var(--color-border);
+			border-bottom: 1px solid var(--color-border);
+			width: 8px;
+			border-radius: 0 0 0 8px;
+			position: absolute;
+			left: 8px;
+			top: anchor(--resume-card-content top, 0);
+			bottom: calc(anchor(var(--para-anchor) top) - 12px);
+		}
+
+		&:hover {
+			&::before {
+				z-index: 4;
+				border-color: var(--color-border-hover);
+			}
+		}
+	}
+}
+
+.resume-card-meta {
+	--para-anchor: --resume-meta;
+	anchor-name: var(--para-anchor);
+}
+
+.resume-card-description {
+	--para-anchor: --resume-desc;
+	anchor-name: var(--para-anchor);
+}
+
+.resume-card-description {
+	font-size: var(--font-size-sm);
+	color: var(--color-text-secondary);
+	margin: 0;
+	line-height: var(--line-height-normal);
 }
 
 .experience-list {
@@ -168,27 +285,16 @@
 }
 
 @media (max-width: 768px) {
-	.about-header {
-		padding: var(--spacing-lg) var(--spacing-md);
+	.about-intro-section {
+		padding: var(--spacing-md) clamp(1rem, 3vw, 2rem);
+		margin-bottom: var(--spacing-xl);
 	}
 
-	.about-header h1 {
-		font-size: var(--font-size-2xl);
+	.about-resume {
+		padding: var(--spacing-md) clamp(1rem, 3vw, 2rem);
 	}
 
-	.about-content {
-		padding: var(--spacing-lg) var(--spacing-md);
-	}
-
-	.about-section h2 {
-		font-size: var(--font-size-xl);
-	}
-
-	.about-grid {
-		gap: var(--spacing-lg);
-	}
-
-	.experience-list li {
-		padding: var(--spacing-md);
+	.resume-section-title {
+		font-size: var(--font-size-base);
 	}
 }

@@ -1,12 +1,4 @@
-main {
-	min-height: 100vh;
-  padding: clamp(2rem, 5vw, 4rem) var(--spacing-lg);
-}
 
-main div {
-  max-width: var(--max-width-container);
-  margin: 0 auto;
-}
 
 /* Container padrão para seções */
 .container {

@@ -1,7 +1,7 @@
 :root {
 	/* Cores Primárias (okclh) */
 	--color-primary: oklch(0.86 0.1705 88.22);
-	--color-primary-light: oklch(95% 0.08 70);
+	--color-primary-light: oklch(0.7788 0.1536 79.41);
 	--color-primary-dark: oklch(55% 0.2 70);
 
 	/* Cores Neutras - Light Mode (padrão) */
@@ -46,24 +46,27 @@
 	--transition-slow: 350ms ease-out;
 
 	/* Container */
-	--max-width-container: 1200px;
+	--max-width-container: 1920px;
 }
 
 /* Dark mode explícito */
 html.dark-mode {
-	--color-bg: oklch(15% 0.02 0);
+	--color-bg: oklch(10% 0.02 0);
 	--color-bg-secondary: oklch(22% 0.02 0);
 	--color-text: oklch(95% 0.01 0);
 	--color-text-secondary: oklch(75% 0.02 0);
 	--color-text-tertiary: oklch(55% 0.01 0);
 	--color-border: oklch(30% 0.01 0);
 	--color-border-hover: oklch(30% 0.02 0);
+	--color-primary: oklch(0.86 0.1705 88.22);
+	--color-primary-light: oklch(0.7788 0.1536 79.41);
+	--color-primary-dark: oklch(0.86 0.1705 88.22);
 }
 
 /* Fallback para preferência de sistema (caso não tenha classe) */
 @media (prefers-color-scheme: dark) {
 	html:not(.light-mode) {
-		--color-bg: oklch(15% 0.02 0);
+		--color-bg: oklch(10% 0.02 0);
 		--color-bg-secondary: oklch(22% 0.02 0);
 		--color-text: oklch(95% 0.01 0);
 		--color-text-secondary: oklch(75% 0.02 0);
@@ -117,6 +120,27 @@ body {
 	transition:
 		background-color var(--transition-normal),
 		color var(--transition-normal);
+}
+
+main {
+	min-height: 100vh;
+  padding: clamp(2rem, 5vw, 4rem) var(--spacing-lg);
+}
+
+main > div {
+  max-width: var(--max-width-container);
+  margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: var(--spacing-md);
+
+	* {
+		grid-column: 4 / span 6;
+	}
+
+	& .full-span {
+		grid-column: 1 / -1;
+	}
 }
 
 a {

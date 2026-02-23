@@ -15,7 +15,7 @@ export const sanityClient = createClient({
 	projectId,
 	dataset,
 	apiVersion,
-	useCdn: true,
+	useCdn: !import.meta.env.DEV,
 });
 
 const builder = createImageUrlBuilder({
