@@ -64,7 +64,7 @@
 	left: var(--spacing-xs);
 	top: var(--spacing-xs);
 	width: calc(100% - var(--spacing-xs) * 2);
-	background-color: var(--color-bg-secondary);
+	background-color: var(--color-primary);
 	border-radius: 4px;
 	z-index: 0;
 	transition: all var(--transition-normal);

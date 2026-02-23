@@ -68,8 +68,20 @@
     "formSending": "Sending..."
   },
   "footer": {
-    "text": "© 2026 My Portfolio. All rights reserved.",
-    "contact": "Get in touch"
+    "backToTop": "Top",
+    "backToTopAria": "Back to top",
+    "location": "Quixadá, Brazil",
+    "currentTime": "It's currently {{time}}",
+    "weatherLoading": "Loading weather...",
+    "weatherNow": "The weather is {{description}}, with a low of {{tempMin}}° and a high of {{tempMax}}°",
+    "weatherUnavailable": "Weather unavailable at the moment",
+    "stillTime": "There's still time to",
+    "linkedin": "LinkedIn",
+    "dribbble": "Dribbble",
+    "behance": "Behance",
+    "github": "GitHub",
+    "madeWith": "Made with care (and friends' feedback)",
+    "copyright": "© {{year}} Fellipe Mayan"
   },
   "a11y": {
     "skipToContent": "Skip to main content",

@@ -7,3 +7,4 @@ export {
 	useProject,
 	useAbout,
 } from "./useProjects";
+export { useWeather } from "./useWeather";

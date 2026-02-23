@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { useClickOutside } from '@/hooks/useClickOutside'
 import { useFocusTrap } from '@/hooks/useFocusTrap'
 import { List, X } from 'phosphor-react'
+import ThemeSelector from './ThemeSelector'
+import LanguageSelector from './LanguageSelector'
 import './MobileMenu.css'
 import '../index.css'
 
@@ -127,6 +129,10 @@ export function MobileMenu() {
                   </Link>
                 ))}
               </nav>
+              <div className="mobile-menu-controls" aria-label="Preferencias">
+                <ThemeSelector />
+                <LanguageSelector />
+              </div>
             </div>
           </div>
         </>

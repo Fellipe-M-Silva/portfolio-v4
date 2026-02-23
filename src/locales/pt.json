@@ -30,8 +30,8 @@
     "title": "Sobre",
     "intro": "Designer, artista, experimentador e programador nas horas vagas – Sempre em busca do próximo projeto.",
     "paragraph1": "Pondero profundamente a integração entre pessoas, sistemas e empresas. Atualmente estudando como alinhar meus conhecimentos em programação para melhor documentar processos e projetar sistemas.",
-    "paragraph2": "Disponível para oportunidades de freelancing e trabalho remoto. Se você tem uma ideia que quer transformar em realidade, {{link}}!",
-    "contactLink": "manda uma mensagem",
+    "paragraph2": "Disponível para oportunidades de freelancing e trabalho remoto. Se você tem uma ideia que quer transformar em realidade, {{link}} ",
+    "contactLink": "manda uma mensagem!",
     "currentlyTitle": "Além de design e programação, estou:",
     "currentInterests": [
       "Lendo Memórias de um Sargento de Milícia",
@@ -68,8 +68,20 @@
     "formSending": "Enviando..."
   },
   "footer": {
-    "text": "© 2026 Meu Portfólio. Todos os direitos reservados.",
-    "contact": "Entre em contato"
+    "backToTop": "Topo",
+    "backToTopAria": "Voltar ao topo",
+    "location": "Quixadá, Brasil",
+    "currentTime": "No momento são {{time}}",
+    "weatherLoading": "Carregando clima...",
+    "weatherNow": "O tempo está {{description}}, com mínima de {{tempMin}}° e máxima de {{tempMax}}°",
+    "weatherUnavailable": "Clima indisponível no momento",
+    "stillTime": "Ainda há tempo para ",
+    "linkedin": "LinkedIn",
+    "dribbble": "Dribbble",
+    "behance": "Behance",
+    "github": "GitHub",
+    "madeWith": "Feito com carinho (e o feedback de amigos)",
+    "copyright": "© {{year}} Fellipe Mayan"
   },
   "a11y": {
     "skipToContent": "Pular para o conteúdo principal",

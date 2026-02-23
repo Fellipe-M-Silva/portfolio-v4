@@ -74,7 +74,7 @@ html.dark-mode {
 @media (prefers-color-scheme: dark) {
 	html:not(.light-mode) {
 		--color-bg: oklch(10% 0.02 0);
-		--color-bg-secondary: oklch(22% 0.02 0);
+		--color-bg-secondary: oklch(15% 0.01 0);
 		--color-text: oklch(95% 0.01 0);
 		--color-text-secondary: oklch(75% 0.02 0);
 		--color-text-tertiary: oklch(55% 0.01 0);
@@ -209,18 +209,50 @@ body {
 
 p {
 	margin-bottom: var(--spacing-md);
+	text-wrap: balance;
 }
 
 a {
-	color: inherit;
-	text-decoration: none;
+	color: var(--color-text-secondary);
+	text-decoration: underline;
+
+	&:hover {
+		color: var(--color-text);
+	}
+
+	
 }
 
 button {
-	font-family: inherit;
+	font-family: var(--font-family-mono);
 	cursor: pointer;
 	border: none;
 	background: none;
+	display: inline-block;
+	text-transform: uppercase;
+	transition: color var(--transition-normal);
+
+	&:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+}
+
+button.primary {
+	background-color: var(--color-text);
+	color: var(--color-bg);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: 8px;
+	font-size: var(--font-size-sm);
+	transition:
+		background-color var(--transition-normal);
+
+	&:hover {
+		background-color: var(--color-primary);
+		color: var(--color-text-selected);
+	}
+
+	
 }
 
 button.secondary {
@@ -247,10 +279,13 @@ section {
 	font-size: var(--font-size-2xl);
 	line-height: var(--line-height-tight);
 	letter-spacing: -0.02em;
-	/* max-width: 60ch; */
 	margin-bottom: var(--spacing-lg);
 }
 
+strong {
+	color: var(--color-text);
+	font-weight: 700;
+}
 /* Acessibilidade: Respeitar redução de movimento */
 @media (prefers-reduced-motion: reduce) {
 	* {

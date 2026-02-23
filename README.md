@@ -66,6 +66,14 @@ portfolio-v4/
 # Instalar dependências
 npm install
 
+# Configurar variáveis de ambiente
+# Copie .env.example para .env.local e adicione suas chaves
+cp .env.example .env.local
+
+# Obtenha uma chave gratuita da API OpenWeatherMap em:
+# https://openweathermap.org/api
+# E adicione como VITE_OPENWEATHER_API_KEY no .env.local
+
 # Iniciar servidor de desenvolvimento
 npm run dev
 

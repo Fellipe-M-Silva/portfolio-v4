@@ -3,14 +3,12 @@
 	--breakout-size: calc(
 		(var(--breakout-max-width) - var(--content-max-width)) / 2
 	);
-
 	background-color: var(--color-bg);
 	border-bottom: 1px solid var(--color-border);
 	padding-block: var(--spacing-xs);
 	position: sticky;
 	top: 0;
 	z-index: 10;
-
 	display: grid;
 	grid-template-columns:
 		[full-width-start] minmax(var(--padding-inline), 1fr)
@@ -23,23 +21,11 @@
 		minmax(0, var(--breakout-size)) [breakout-end]
 		minmax(var(--padding-inline), 1fr) [full-width-end];
 	align-items: center;
+	gap: 0;
 }
 
-.header > :not(.breakout, .full-width),
-.full-width > :not(.breakout, .full-width) {
-	grid-column: content;
-}
-
-.header .breakout {
-	grid-column: breakout;
-}
-
-.header .full-width {
-	grid-column: full-width;
-}
-
-.header .content {
-	grid-column: content;
+.header > :not(.breakout, .full-width) {
+	/* default: do nothing, explicit grid-column below */
 }
 
 .header .breakout-left {
@@ -54,12 +40,15 @@
 	transform: translateX(calc(var(--spacing-xs) * -1));
 	display: flex;
 	justify-content: left;
+	grid-column: content;
 }
 
 .nav-logo a {
 	font-weight: 600;
 	color: var(--color-text);
 	transition: color var(--transition-normal);
+	text-decoration: none;
+	white-space: nowrap;
 }
 
 .nav-logo a:hover {
@@ -122,10 +111,10 @@
 
 .nav-links a {
 	font-size: var(--font-size-sm);
-	font-family:
-		"Source Code Pro", "Consolas", "Monaco", "Menlo", monospace !important;
+	font-family: var(--font-family-mono);
 	color: var(--color-text);
 	text-transform: uppercase;
+	text-decoration: none;
 	transition: color var(--transition-normal);
 	position: relative;
 	padding: var(--spacing-xs) var(--spacing-xs);
@@ -180,7 +169,7 @@
 		height: anchor-size(--hovered-link height, 32px);
 		top: anchor(--hovered-link top, 0);
 		left: anchor(--hovered-link left, 0);
-		background-color: var(--color-bg-secondary);
+		background-color: var(--color-primary);
 	}
 
 	/* Focus: retângulo envolvendo o link */
@@ -189,7 +178,7 @@
 		height: anchor-size(--focused-link height, 32px);
 		top: anchor(--focused-link top, 0);
 		left: anchor(--focused-link left, 0);
-		background-color: var(--color-bg-secondary);
+		background-color: var(--color-primary);
 	}
 }
 
@@ -210,28 +199,19 @@
 	display: flex;
 	justify-content: flex-end;
 	gap: var(--spacing-xs);
+	grid-column: breakout-end;
 }
 
-@media (max-width: 1080px) {
-	.nav-logo a {
-		font-size: var(--font-size-base);
-	}
+.header-mobile-menu {
+	display: none;
+	justify-content: flex-end;
+	grid-column: breakout-end;
+}
 
-	.nav-links {
+@media (max-width: 1023px) {
+	.header-controls,
+	.header-nav {
 		display: none;
-	}
-
-	.header-controls {
-		gap: var(--spacing-xs);
-	}
-
-	.breakout-left,
-	.breakout-right {
-		grid-column: content;
-	}
-
-	.header-controls {
-		justify-content: flex-end;
 	}
 }
 

@@ -167,7 +167,6 @@ export function About() {
         </ul>
       </section>
 
-      <section className="about-resume" aria-label={t('a11y.resume', 'Currículo')}>
         {resumeData.experience.length > 0 && (
           <ResumeSection title={t('about.experience')} items={resumeData.experience} />
         )}
@@ -177,7 +176,6 @@ export function About() {
         {resumeData.research.length > 0 && (
           <ResumeSection title={t('about.research')} items={resumeData.research} />
         )}
-      </section>
     </>
   )
 }

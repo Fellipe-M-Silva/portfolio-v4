@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next'
 import ThemeSelector from './ThemeSelector'
 import LanguageSelector from './LanguageSelector'
 import MobileMenu from './MobileMenu'
-import './Header.css'
-
+import './Header.css''
 export function Header() {
   const { t } = useTranslation()
   const location = useLocation()
@@ -72,6 +71,8 @@ export function Header() {
         <div className="header-controls breakout-right">
           <ThemeSelector />
           <LanguageSelector />
+        </div>
+        <div className="header-mobile-menu breakout-right">
           <MobileMenu />
         </div>
       </header>
