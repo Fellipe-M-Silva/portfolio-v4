@@ -85,26 +85,31 @@ export function MobileMenu() {
         <>
           <div 
             className={`mobile-menu-overlay ${isAnimating && !isClosing ? 'open' : ''} ${isClosing ? 'closing' : ''}`} 
-            onClick={handleClose} 
+            onClick={handleClose}
+            aria-hidden="true"
           />
           <div ref={clickOutsideRef} className="mobile-menu-wrapper">
             <div 
               ref={focusTrapRef}
               className={`mobile-menu-container ${isAnimating && !isClosing ? 'open' : ''} ${isClosing ? 'closing' : ''}`}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="mobile-menu-title"
             >
               <div className="mobile-menu-header">
-                <h2 className="mobile-menu-label">Menu</h2>
+                <h2 id="mobile-menu-title" className="mobile-menu-label">Menu</h2>
                 <button
                   className="mobile-menu-close secondary"
                   onClick={handleClose}
                   aria-label="Fechar menu"
                 >
-                  <X size={20} weight="bold" />
+                  <X size={20} weight="bold" aria-hidden="true" />
                 </button>
               </div>
 
               <nav 
                 className="mobile-menu-nav"
+                aria-label="Navegação móvel"
                 style={{
                   '--active-index': hoveredIndex !== null ? hoveredIndex : currentIndex,
                 } as React.CSSProperties}

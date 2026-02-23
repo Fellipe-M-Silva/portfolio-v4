@@ -5,12 +5,6 @@
 	color: var(--color-text);
 }
 
-.about-intro {
-	font-size: var(--font-size-lg);
-	color: var(--color-text-secondary);
-	max-width: 600px;
-	margin-bottom: var(--spacing-md);
-}
 
 .about-interests {
 	list-style: none;
@@ -40,7 +34,6 @@
 	color: var(--color-text-secondary);
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
-	margin-top: var(--spacing-xl);
 	margin-bottom: var(--spacing-md);
 	padding-bottom: var(--spacing-sm);
 	border-bottom: 2px solid var(--color-border);
@@ -285,15 +278,6 @@
 }
 
 @media (max-width: 768px) {
-	.about-intro-section {
-		padding: var(--spacing-md) clamp(1rem, 3vw, 2rem);
-		margin-bottom: var(--spacing-xl);
-	}
-
-	.about-resume {
-		padding: var(--spacing-md) clamp(1rem, 3vw, 2rem);
-	}
-
 	.resume-section-title {
 		font-size: var(--font-size-base);
 	}

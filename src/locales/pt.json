@@ -28,7 +28,16 @@
   },
   "about": {
     "title": "Sobre",
-    "intro": "Product Designer com foco em experiência de usuário e design de sistemas.",
+    "intro": "Designer, artista, experimentador e programador nas horas vagas – Sempre em busca do próximo projeto.",
+    "paragraph1": "Pondero profundamente a integração entre pessoas, sistemas e empresas. Atualmente estudando como alinhar meus conhecimentos em programação para melhor documentar processos e projetar sistemas.",
+    "paragraph2": "Disponível para oportunidades de freelancing e trabalho remoto. Se você tem uma ideia que quer transformar em realidade, {{link}}!",
+    "contactLink": "manda uma mensagem",
+    "currentlyTitle": "Além de design e programação, estou:",
+    "currentInterests": [
+      "Lendo Memórias de um Sargento de Milícia",
+      "Estudando Cálculo (de novo)",
+      "Jogando Hades 2"
+    ],
     "experience": "Experiência",
     "education": "Educação",
     "research": "Pesquisa",
@@ -61,5 +70,23 @@
   "footer": {
     "text": "© 2026 Meu Portfólio. Todos os direitos reservados.",
     "contact": "Entre em contato"
+  },
+  "a11y": {
+    "skipToContent": "Pular para o conteúdo principal",
+    "mainNavigation": "Navegação principal",
+    "loading": "Carregando informações...",
+    "contentLoaded": "Conteúdo carregado com sucesso",
+    "closeMenu": "Fechar menu",
+    "openMenu": "Abrir menu",
+    "selectTheme": "Selecionar tema",
+    "selectLanguage": "Selecionar idioma",
+    "introduction": "Introdução",
+    "resume": "Currículo",
+    "currentInterests": "Interesses atuais"
+  },
+  "errors": {
+    "loadResume": "Erro ao carregar currículo. Tente novamente mais tarde.",
+    "loadProjects": "Erro ao carregar projetos. Tente novamente mais tarde.",
+    "notFound": "Página não encontrada"
   }
 }

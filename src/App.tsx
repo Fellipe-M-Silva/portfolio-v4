@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content" className='content-grid'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projetos" element={<Projects />} />

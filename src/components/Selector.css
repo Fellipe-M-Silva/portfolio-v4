@@ -9,14 +9,14 @@
 	transition: all var(--transition-normal);
 }
 
-.selector-button:hover,
-.selector-button:focus-visible {
+.selector-button:hover {
 	outline: none;
 }
 
 .selector-button:focus-visible {
-	outline: 2px solid var(--color-text);
+	outline: 3px solid var(--color-primary);
 	outline-offset: 2px;
+	border-radius: 6px;
 }
 
 .chevron {
@@ -141,21 +141,21 @@
 	anchor-name: --hovered-item;
 }
 
-.dropdown-item:hover,
+.dropdown-item:hover {
+	color: var(--color-text);
+}
+
 .dropdown-item:focus-visible {
 	color: var(--color-text);
-	outline: none;
+	outline: 3px solid var(--color-primary);
+	outline-offset: -3px;
+	z-index: 2;
+	border-radius: 4px;
 }
 
 .dropdown-item.active {
 	color: var(--color-text);
 	font-weight: 600;
-}
-
-.dropdown-item:focus-visible {
-	outline: 2px solid var(--color-primary);
-	outline-offset: -2px;
-	z-index: 2;
 }
 
 /* Dark mode adjustments */

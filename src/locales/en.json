@@ -28,7 +28,16 @@
   },
   "about": {
     "title": "About",
-    "intro": "Product Designer focused on user experience and design systems.",
+    "intro": "Designer, artist, experimenter and programmer in my spare time – Always looking for the next project.",
+    "paragraph1": "I deeply ponder the integration between people, systems and companies. Currently studying how to align my programming knowledge to better document processes and design systems.",
+    "paragraph2": "Available for freelancing opportunities and remote work. If you have an idea you want to turn into reality, {{link}}!",
+    "contactLink": "send me a message",
+    "currentlyTitle": "Besides design and programming, I'm currently:",
+    "currentInterests": [
+      "Reading Memoirs of a Militia Sergeant",
+      "Studying Calculus (again)",
+      "Playing Hades 2"
+    ],
     "experience": "Experience",
     "education": "Education",
     "research": "Research",
@@ -61,5 +70,23 @@
   "footer": {
     "text": "© 2026 My Portfolio. All rights reserved.",
     "contact": "Get in touch"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "mainNavigation": "Main navigation",
+    "loading": "Loading information...",
+    "contentLoaded": "Content loaded successfully",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "selectTheme": "Select theme",
+    "selectLanguage": "Select language",
+    "introduction": "Introduction",
+    "resume": "Resume",
+    "currentInterests": "Current interests"
+  },
+  "errors": {
+    "loadResume": "Error loading resume. Please try again later.",
+    "loadProjects": "Error loading projects. Please try again later.",
+    "notFound": "Page not found"
   }
 }
