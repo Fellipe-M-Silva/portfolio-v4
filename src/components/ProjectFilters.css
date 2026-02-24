@@ -1,0 +1,102 @@
+/* Fallback para navegadores sem anchor positioning */
+@supports not (anchor-name: --test) {
+	.chip.active {
+		background: var(--color-primary);
+		color: var(--color-bg);
+	}
+	.chip:hover:not(.active) {
+		background: var(--color-primary);
+		color: var(--color-bg);
+		opacity: 0.85;
+	}
+	.chips-row::after {
+		display: none;
+	}
+}
+.project-filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	margin-bottom: 2rem;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+}
+
+.chips-row::after {
+	content: "";
+	position: absolute;
+	z-index: 0;
+	border-radius: 1.5em;
+	background: var(--color-primary);
+	transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	pointer-events: none;
+	/* Anchor positioning para navegadores modernos */
+	width: anchor-size(
+		--hovered-chip width,
+		anchor-size(--active-chip width, 0)
+	);
+	height: anchor-size(
+		--hovered-chip height,
+		anchor-size(--active-chip height, 0)
+	);
+	left: anchor(--hovered-chip left, anchor(--active-chip left, 0));
+	top: anchor(--hovered-chip top, anchor(--active-chip top, 0));
+}
+
+.chip {
+	background: none;
+	color: var(--color-text-secondary);
+	border: none;
+	border-radius: 1.5em;
+	padding: 0.4em 1.2em;
+	font-family: inherit;
+	font-size: 1em;
+	cursor: pointer;
+	position: relative;
+	z-index: 1;
+	transition: color 0.2s;
+}
+.chip.active {
+	anchor-name: --active-chip;
+  color: var(--color-text);
+}
+.chip:hover {
+	anchor-name: --hovered-chip;
+  color: var(--color-text);
+}
+.chip:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}
+.view-toggle {
+	display: flex;
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+	overflow: hidden;
+}
+.toggle-btn {
+	background: var(--color-bg);
+	color: var(--text-secondary);
+	border: none;
+	padding: var(--spacing-xs) var(--spacing-sm);
+	font-size: 1.2em;
+	cursor: pointer;
+	transition:
+		background 0.2s,
+		color 0.2s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&:not(:last-child) {
+		border-right: 1px solid var(--color-border);
+	}
+}
+.toggle-btn.active,
+.toggle-btn:focus-visible {
+	background: var(--color-bg-secondary);
+	color: var(--color-text);
+	outline: none;
+}

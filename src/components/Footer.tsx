@@ -10,7 +10,16 @@ export function Footer() {
   const location = useLocation()
   const [currentTime, setCurrentTime] = useState(new Date())
   // Ajusta o idioma para o formato aceito pela API do OpenWeather
-  const lang = i18n.language === 'pt' ? 'pt_br' : i18n.language;
+  const lang = (() => {
+    if (i18n.language.startsWith('pt')) return 'pt_br';
+    if (i18n.language.startsWith('en')) return 'en';
+    return i18n.language;
+  })();
+  // Força recarregamento do clima ao trocar de idioma
+  useEffect(() => {
+    const cacheKey = `weather_data_${lang}`;
+    localStorage.removeItem(cacheKey);
+  }, [lang]);
   const { data: weatherData, loading: weatherLoading } = useWeather('Quixadá', 'BR', lang)
 
   useEffect(() => {
@@ -89,6 +98,14 @@ export function Footer() {
               {after}
             </>;
           })()}
+        </p>
+        <p>
+          {t('footer.lastUpdated', {
+            date: new Date(import.meta.env.VITE_DEPLOY_DATE || Date.now()).toLocaleDateString(i18n.language === 'pt' ? 'pt-BR' : 'en-US', {
+              year: 'numeric',
+              month: 'short'
+            })
+          })}
         </p>
       </div>
 

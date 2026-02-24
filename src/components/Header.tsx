@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next'
 import ThemeSelector from './ThemeSelector'
 import LanguageSelector from './LanguageSelector'
 import MobileMenu from './MobileMenu'
-import './Header.css''
+import './Header.css'
+
 export function Header() {
   const { t } = useTranslation()
   const location = useLocation()
@@ -17,7 +18,6 @@ export function Header() {
 
   return (
     <>
-      {/* Skip to main content link */}
       <a href="#main-content" className="skip-link">
         {t('a11y.skipToContent', 'Pular para o conteúdo principal')}
       </a>

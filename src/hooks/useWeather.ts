@@ -118,7 +118,7 @@ export function useWeather(
 		};
 
 		fetchWeather();
-	}, [city, country]);
+	}, [city, country, lang]);
 
 	return weather;
 }

@@ -9,14 +9,14 @@
 	transition: all var(--transition-normal);
 }
 
-.selector-button:hover {
+.selector-button:hover,
+.selector-button:focus-visible {
 	outline: none;
 }
 
 .selector-button:focus-visible {
-	outline: 3px solid var(--color-primary);
+	outline: 2px solid var(--color-text);
 	outline-offset: 2px;
-	border-radius: 6px;
 }
 
 .chevron {
@@ -64,7 +64,7 @@
 	left: var(--spacing-xs);
 	top: var(--spacing-xs);
 	width: calc(100% - var(--spacing-xs) * 2);
-	background-color: var(--color-primary);
+	background-color: var(--color-bg-secondary);
 	border-radius: 4px;
 	z-index: 0;
 	transition: all var(--transition-normal);
@@ -141,21 +141,21 @@
 	anchor-name: --hovered-item;
 }
 
-.dropdown-item:hover {
-	color: var(--color-text);
-}
-
+.dropdown-item:hover,
 .dropdown-item:focus-visible {
 	color: var(--color-text);
-	outline: 3px solid var(--color-primary);
-	outline-offset: -3px;
-	z-index: 2;
-	border-radius: 4px;
+	outline: none;
 }
 
 .dropdown-item.active {
 	color: var(--color-text);
 	font-weight: 600;
+}
+
+.dropdown-item:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: -2px;
+	z-index: 2;
 }
 
 /* Dark mode adjustments */

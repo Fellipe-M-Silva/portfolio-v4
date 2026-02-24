@@ -24,20 +24,25 @@ export function useProjects() {
 		const fetchProjects = async () => {
 			try {
 				const query = `*[_type == "project"] | order(publishedAt desc) {
-          _id,
-          slug,
-          title,
-          description,
-          featured,
-          publishedAt,
-          image {
-            asset -> {
-              _id,
-              url
-            },
-            alt
-          }
-        }`;
+					   _id,
+					   slug,
+					   title,
+					   description,
+					   featured,
+					   publishedAt,
+					   image {
+						   asset -> {
+							   _id,
+							   url
+						   },
+						   alt
+					   },
+					   tags[]-> {
+						   _id,
+						   title,
+						   slug
+					   }
+				   }`;
 
 				const projects = await sanityClient.fetch(query);
 
@@ -88,19 +93,24 @@ export function useFeaturedProjects(limit: number = 3) {
 		const fetchFeatured = async () => {
 			try {
 				const query = `*[_type == "project" && featured == true] | order(publishedAt desc)[0..${limit - 1}] {
-          _id,
-          slug,
-          title,
-          description,
-          publishedAt,
-          image {
-            asset -> {
-              _id,
-              url
-            },
-            alt
-          }
-        }`;
+					   _id,
+					   slug,
+					   title,
+					   description,
+					   publishedAt,
+					   image {
+						   asset -> {
+							   _id,
+							   url
+						   },
+						   alt
+					   },
+					   tags[]-> {
+						   _id,
+						   title,
+						   slug
+					   }
+				   }`;
 
 				const projects = await sanityClient.fetch(query);
 
@@ -340,18 +350,30 @@ export function useResume() {
 
 		const fetchResume = async () => {
 			try {
+				// Tenta obter do sessionStorage
+				const cached = sessionStorage.getItem("resumeData");
+				if (cached) {
+					const parsed = JSON.parse(cached);
+					setState({
+						data: parsed,
+						isLoading: false,
+						error: null,
+					});
+					return;
+				}
+
 				const query = `*[_type == "careerItem"] | order(order asc) {
-          _id,
-          title,
-          location,
+					_id,
+					title,
+					location,
 					startYear,
 					endYear,
 					isPresent,
-          type,
-          category,
-          description,
-          order
-        }`;
+					type,
+					category,
+					description,
+					order
+				}`;
 
 				const careerItems = await sanityClient.fetch(query);
 
@@ -368,6 +390,12 @@ export function useResume() {
 							(item) => item.category === "research",
 						),
 					};
+
+					// Salva no sessionStorage
+					sessionStorage.setItem(
+						"resumeData",
+						JSON.stringify(groupedData),
+					);
 
 					setState({
 						data: groupedData,

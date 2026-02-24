@@ -42,7 +42,7 @@ function ResumeCard({ item }: { item: CareerItem }) {
 function ResumeSection({ title, items }: { title: string; items: CareerItem[] }) {
   return (
     <section className="resume-section">
-      <h2 className="resume-section-title">{title}</h2>
+      <h2 className="section-title">{title}</h2>
       <ul className="resume-list">
         {items.map((item) => (
           <ResumeCard key={item._id} item={item} />
@@ -152,7 +152,7 @@ export function About() {
         >
           {t('nav.about')}
         </h1>
-        <p className="intro-paragraph">{t('about.intro')}</p>
+        <h1 className="page-title">{t('about.intro')}</h1>
         <p>{t('about.paragraph1')}</p>
         <p>
           {t('about.paragraph2', { link: '' }).split('{{link}}')[0]}

@@ -1,0 +1,163 @@
+/* Versão GRID do card de projeto */
+.project-card-grid {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Versão LISTA (horizontal) do card de projeto */
+.project-card-list {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	min-height: 160px;
+	gap: 0;
+}
+.project-card-list .project-image {
+	width: 320px;
+	min-width: 320px;
+	aspect-ratio: 16/9;
+	height: auto;
+	max-height: calc(320px / 16 * 9);
+	border-radius: 0.5rem;
+	flex-shrink: 0;
+	flex-grow: 0;
+	overflow: hidden;
+}
+.project-card-list .project-info {
+	flex: 1;
+	padding-top: 0;
+	padding-left: var(--spacing-sm);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.7rem;
+}
+.project-card-list .project-info h3 {
+	font-size: var(--font-size-md);
+}
+.project-card-list .project-actions {
+	margin-top: 1em;
+}
+@media (max-width: 600px) {
+	.project-card-list {
+		flex-direction: column;
+		min-height: unset;
+	}
+	.project-card-list .project-image {
+		width: 100%;
+		min-width: 0;
+		border-radius: 0.5rem;
+	}
+	.project-card-list .project-info {
+		padding-top: 1rem;
+	}
+}
+.project-card {
+	background: var(--color-bg);
+	box-shadow: var(--shadow);
+	overflow: hidden;
+}
+.project-image {
+	width: 100%;
+	aspect-ratio: 16/9;
+	background: var(--color-bg-secondary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.project-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.no-image {
+	color: var(--text-muted);
+	font-size: 1rem;
+	font-family: monospace;
+}
+.project-card-grid .project-info {
+	padding-top: var(--spacing-sm);
+}
+.project-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+.project-info h3 {
+	margin: 0;
+	font-size: 1.2rem;
+	transition: color 0.2s;
+}
+.group:hover .project-info h3,
+.group:focus-within .project-info h3 {
+	color: var(--primary);
+}
+.project-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	padding: 0;
+	list-style: none;
+}
+.project-tags .mono {
+	font-family: var(--font-family-mono);
+	font-size: var(--font-size-sm);
+	text-transform: uppercase;
+
+	&:not(:last-child)&:not(:only-child)::after {
+		content: ",";
+		margin-left: 0.25em;
+	}
+}
+.project-card-link {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+	transition: color 0.2s;
+}
+.group:hover .project-btn.secondary,
+.group:focus-within .project-btn.secondary {
+	background: var(--color-bg-hover);
+	border-color: var(--color-border-hover);
+	color: var(--color-text);
+}
+.group:hover .project-card-link,
+.group:focus-within .project-card-link {
+	color: var(--primary);
+}
+
+.project-actions {
+	margin-top: 0.7em;
+	display: flex;
+	gap: 0.5em;
+}
+
+.project-btn {
+	border-radius: 0.5em;
+	padding: var(--spacing-xs) var(--spacing-sm);
+	font-size: var(--font-size-sm);
+	font-family: var(--font-family-mono);
+	cursor: pointer;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: background 0.2s;
+}
+.project-btn.secondary {
+	background: var(--color-bg);
+	color: var(--color-text-secondary);
+	border: 1px solid var(--color-border);
+	box-shadow: none;
+}
+.project-btn.secondary:hover,
+.project-btn.secondary:focus {
+	background: var(--color-bg-hover);
+	border-color: var(--color-border-hover);
+	color: var(--color-text);
+	outline: none;
+}
+.project-btn:hover,
+.project-btn:focus {
+	background: var(--primary-dark, #1a237e);
+	outline: none;
+}

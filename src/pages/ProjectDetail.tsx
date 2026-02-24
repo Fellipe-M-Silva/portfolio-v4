@@ -54,18 +54,16 @@ export function ProjectDetail() {
   }
 
   return (
-    <div className="project-detail">
-      <div className="project-header-detail">
-        <div className="container">
-          <button
-            className="back-button"
-            onClick={() => navigate('/projetos')}
-          >
-            ← {t('project.backToProjects')}
-          </button>
-          <h1>{getLocalizedString(project.title, i18n.language)}</h1>
-          <p className="project-subtitle">{getLocalizedString(project.description, i18n.language)}</p>
-        </div>
+    <>
+      <div>
+        <button
+          className="back-button"
+          onClick={() => navigate('/projetos')}
+        >
+          ← {t('project.backToProjects')}
+        </button>
+        <h1>{getLocalizedString(project.title, i18n.language)}</h1>
+        <p className="project-subtitle">{getLocalizedString(project.description, i18n.language)}</p>
       </div>
 
       <div className="container project-content">
@@ -139,7 +137,7 @@ export function ProjectDetail() {
           </button>
         </div>
       </section>
-    </div>
+    </>
   )
 }
 

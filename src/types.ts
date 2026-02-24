@@ -21,6 +21,23 @@ export interface Project {
 		};
 		alt: string;
 	};
+	thumbnail?: {
+		asset: {
+			url: string;
+			_id: string;
+		};
+		alt: string;
+	};
+	thumbnailExtra?: {
+		asset: {
+			url: string;
+			_id: string;
+		};
+		alt: string;
+	};
+	tags?: string[];
+	shortDescription?: LocalizedString;
+	link?: string;
 	teamSize: string;
 	duration: string;
 	role: string;

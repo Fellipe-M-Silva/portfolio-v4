@@ -28,9 +28,9 @@ export default defineType({
 			initialValue: false,
 		}),
 		defineField({
-			name: "image",
+			name: "thumbnail",
 			type: "image",
-			title: "Image",
+			title: "Thumbnail",
 			options: { hotspot: true },
 			fields: [
 				defineField({
@@ -39,6 +39,49 @@ export default defineType({
 					title: "Alt Text",
 				}),
 			],
+		}),
+		defineField({
+			name: "thumbnailExtra",
+			type: "image",
+			title: "Thumbnail Extra",
+			options: { hotspot: true },
+			fields: [
+				defineField({
+					name: "alt",
+					type: "string",
+					title: "Alt Text",
+				}),
+			],
+		}),
+		defineField({
+			name: "tags",
+			type: "array",
+			title: "Tags",
+			of: [{ type: "reference", to: [{ type: "tag" }] }],
+			description: "Tags bilíngues relacionadas ao projeto.",
+		}),
+		defineField({
+			name: "shortDescription",
+			type: "localizedString",
+			title: "Short Description",
+		}),
+		defineField({
+			name: "link",
+			type: "url",
+			title: "Link",
+		}),
+		defineField({
+			name: "externalRepo",
+			type: "url",
+			title: "Repositório Externo",
+			description:
+				"Link para o repositório do projeto (GitHub, GitLab, etc)",
+		}),
+		defineField({
+			name: "liveDemo",
+			type: "url",
+			title: "Live Demo",
+			description: "Link para uma demonstração ao vivo do projeto.",
 		}),
 		defineField({
 			name: "teamSize",

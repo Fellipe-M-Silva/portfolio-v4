@@ -14,7 +14,8 @@
   "projects": {
     "title": "Projects",
     "description": "A selection of case studies from recent work",
-    "viewProject": "View project"
+    "viewProject": "View project",
+    "all": "All"
   },
   "project": {
     "backToProjects": "Back to projects",
@@ -46,6 +47,10 @@
     "downloadCV": "Download CV"
   },
   "contact": {
+    "introText1": "Every good idea starts with a good story. If you have a project or just want to say",
+    "hello": "hello",
+    "introText2": ", this is the right place :)",
+    "introText3": "Get in touch via email, LinkedIn or the form below. Give as many details as your imagination allows – let's talk!",
     "title": "Contact",
     "intro": "Let's talk! I'm always open to discuss new projects and ideas.",
     "infoTitle": "Get in Touch",
@@ -65,7 +70,8 @@
     "formMessage": "Message",
     "formMessagePlaceholder": "Write your message here...",
     "formSubmit": "Send Message",
-    "formSending": "Sending..."
+    "formSending": "Sending...",
+    "lgpdNotice": "Your data will be used exclusively for contact purposes and will not be shared with third parties."
   },
   "footer": {
     "backToTop": "Top",
@@ -81,7 +87,8 @@
     "behance": "Behance",
     "github": "GitHub",
     "madeWith": "Made with care (and friends' feedback)",
-    "copyright": "© {{year}} Fellipe Mayan"
+    "copyright": "© {{year}} Fellipe Mayan",
+    "lastUpdated": "Last updated {{date}}"
   },
   "a11y": {
     "skipToContent": "Skip to main content",
